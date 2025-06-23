@@ -19,15 +19,10 @@ dados = {
         "DIPIRONA MONOIDRATADA",
         "PREGABALINA"
     ],
-<<<<<<< HEAD
     "Inaptos_Homens":   [0, 1, 0, 1, 0, 1],
     "Inaptos_Mulheres": [1, 1, 0, 0, 0, 0],
     "Aptos_Homens":     [2, 1, 0, 0, 3, 8],
     "Aptos_Mulheres":   [2, 2, 1, 1, 6, 6]
-=======
-    "Inaptos": [1, 2, 0, 1, 0, 1],
-    "Aptos":   [4, 3, 1, 1, 9, 14]
->>>>>>> 4b265f629403d09de20bc8e7928cfc17f6a975ee
 }
 
 df = pd.DataFrame(dados)
@@ -110,7 +105,7 @@ with col_dir:
     st.markdown("---")
 
     # Gráfico de Pizza - Agendados que Não Compareceram (Total Geral)
-    st.subheader("🚫 Não comparecimentos")
+    st.subheader("🚫 Participantes Agendados que Não Compareceram (Total Geral)")
 
     # Ajuste os valores conforme seu dado real
     total_agendados = 151
