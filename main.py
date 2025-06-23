@@ -19,8 +19,8 @@ dados = {
         "DIPIRONA MONOIDRATADA",
         "PREGABALINA"
     ],
-    "Inaptos": [1, 2, 0, 1, 0, 14],
-    "Aptos":   [4, 3, 1, 1, 9, 1]
+    "Inaptos": [1, 2, 0, 1, 0, 1],
+    "Aptos":   [4, 3, 1, 1, 9, 14]
 }
 df = pd.DataFrame(dados)
 
