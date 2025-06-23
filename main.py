@@ -66,9 +66,9 @@ col_esq, col_dir = st.columns([2, 1])
 # GRÁFICO DE BARRAS
 with col_esq:
     st.subheader("📚 Gráfico de barras")
-    df_bar = df.set_index("Estudo")[[
-        "Aptos_Homens", "Aptos_Mulheres", "Inaptos_Homens", "Inaptos_Mulheres", "Total_Geral"
-    ]]
+    df_bar = df.set_index("Estudo")[
+        ["Aptos_Homens", "Aptos_Mulheres", "Inaptos_Homens", "Inaptos_Mulheres", "Total_Geral"]
+    ]
     fig_bar, ax_bar = plt.subplots(figsize=(13, 5))
     df_bar.plot(
         kind="bar",
@@ -81,6 +81,9 @@ with col_esq:
             "#424242"   # cinza escuro - total geral
         ]
     )
+    # Adiciona os valores em cima das barras
+    for container in ax_bar.containers:
+        ax_bar.bar_label(container)
     ax_bar.set_ylabel("Quantidade")
     ax_bar.set_title("Distribuição por Estudo, Sexo e Total")
     ax_bar.legend([
@@ -97,8 +100,13 @@ with col_dir:
     st.subheader("🧩 Inaptos por Estudo (%)")
     inaptos = df[df["Inaptos_Total"] > 0].set_index("Estudo")["Inaptos_Total"]
     fig_pie, ax_pie = plt.subplots(figsize=(4, 4))
-    ax_pie.pie(inaptos, labels=inaptos.index, autopct="%1.1f%%", startangle=140,
-               colors=["#444", "#777", "#999", "#bbb", "#222", "#888"])
+    ax_pie.pie(
+        inaptos,
+        labels=inaptos.index,
+        autopct="%1.1f%%",
+        startangle=140,
+        colors=["#444", "#777", "#999", "#bbb", "#222", "#888"]
+    )
     ax_pie.axis("equal")
     st.pyplot(fig_pie)
 
@@ -120,7 +128,13 @@ with col_dir:
     colors = ["#4CAF50", "#F44336"]
 
     fig2, ax2 = plt.subplots(figsize=(4, 4))
-    ax2.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=90, colors=colors)
+    ax2.pie(
+        sizes,
+        labels=labels,
+        autopct="%1.1f%%",
+        startangle=90,
+        colors=colors
+    )
     ax2.axis("equal")
     st.pyplot(fig2)
 
