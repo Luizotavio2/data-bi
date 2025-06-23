@@ -45,7 +45,7 @@ taxa_inaptos = (total_inaptos / total) * 100
 # =============================
 # TÍTULO
 # =============================
-st.markdown("## 📊 Painel Geral de Estudos Clínicos por Gênero")
+st.markdown("## 📊 Painel Captação de Participantes")
 st.markdown("---")
 
 # =============================
@@ -65,7 +65,7 @@ col_esq, col_dir = st.columns([2, 1])
 
 # GRÁFICO DE BARRAS
 with col_esq:
-    st.subheader("📚 Aptos e Inaptos por Gênero e Estudo (com Totais)")
+    st.subheader("📚 Gráfico de barras")
     df_bar = df.set_index("Estudo")[[
         "Aptos_Homens", "Aptos_Mulheres", "Inaptos_Homens", "Inaptos_Mulheres", "Total_Geral"
     ]]
@@ -105,7 +105,7 @@ with col_dir:
     st.markdown("---")
 
     # Gráfico de Pizza - Agendados que Não Compareceram (Total Geral)
-    st.subheader("🚫 Participantes Agendados que Não Compareceram (Total Geral)")
+    st.subheader("🚫 Não comparecimentos")
 
     # Ajuste os valores conforme seu dado real
     total_agendados = 151
@@ -127,7 +127,7 @@ with col_dir:
 # =============================
 # TABELA DETALHADA SIMPLIFICADA
 # =============================
-st.markdown("### 📋 Tabela Detalhada por Sexo e Totais")
+st.markdown("### 📋 Tabela")
 st.dataframe(
     df[["Estudo", "Aptos_Total", "Inaptos_Total", "Total_Geral"]],
     use_container_width=True
