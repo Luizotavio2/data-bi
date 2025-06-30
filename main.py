@@ -23,20 +23,17 @@ st.markdown("---")
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "AZILSARTANA MEDOXOMILA",
         "BD POMADA",
-        "BREXPIRAZOL",
-        "DICLORIDRATO DE TRIMETAZIDINA ",
-        "DIPIRONA MONOIDRATADA",
-        "CLORIDRATO DE PAZOPANIBE"
+        "BREXPIPRAZOL",
+        "DICLORIDRATO DE TRIMETAZIDINA "
         
     ],
-    "Inaptos_Homens":       [1, 1, 0, 0, 1, 3, 0],
-    "Inaptos_Mulheres":     [2, 0, 0, 0, 0, 2, 1],
-    "Aptos_Homens":         [2, 3, 0, 1, 3, 13, 0],
-    "Aptos_Mulheres":       [2, 6, 1, 1, 7, 16, 0],
-    "Desistentes_Homens":   [0, 0, 0, 0, 1, 0, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0]
+    "Inaptos_Homens":       [0, 1, 2, 0],
+    "Inaptos_Mulheres":     [0, 0, 3, 0],
+    "Aptos_Homens":         [5, 0, 3, 9],
+    "Aptos_Mulheres":       [2, 0, 7, 4],
+    "Desistentes_Homens":   [0, 0, 0, 1],
+    "Desistentes_Mulheres": [0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -52,8 +49,8 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 197
-total_faltaram = 131
+total_agendados = 121
+total_faltaram = 84
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
 
