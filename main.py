@@ -17,7 +17,7 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("## 📊 Painel de Captação de Participantes")
-st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-06-23")
+st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-06-30")
 st.markdown("---")
 
 dados = {
@@ -26,7 +26,6 @@ dados = {
         "BD POMADA",
         "BREXPIPRAZOL",
         "DICLORIDRATO DE TRIMETAZIDINA "
-        
     ],
     "Inaptos_Homens":       [0, 1, 2, 0],
     "Inaptos_Mulheres":     [0, 0, 3, 0],
