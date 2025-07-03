@@ -17,24 +17,25 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("## 📊 Painel de Captação de Participantes")
-st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-02")
+st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-03")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
         "AZILSARTANA MEDOXOMILA 3ºG",
-        "BREXPIPRAZOL",
+        "CLORIDRATO DE NEBIVOLOL  1ºG",
         "CLORIDRATO DE PAZOPANIBE",
         "ROSUVASTATINA CÁLCICA + EZETIMIBA",
-        "SUMATRIPTANA + NAPROXENO"
+        "ROSUVASTATINA CÁLCICA + EZETIMIBA 2ºG",
+        "SUMATRIPTANA + NAPROXENO "
     ],
-    "Inaptos_Homens":       [0, 1, 2, 0, 1, 2],
-    "Inaptos_Mulheres":     [0, 0, 1, 1, 2, 0],
-    "Aptos_Homens":         [2, 2, 3, 1, 1, 3],
-    "Aptos_Mulheres":       [1, 0, 6, 1, 4, 10],
-    "Desistentes_Homens":   [0, 0, 0, 0, 1, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
+    "Inaptos_Homens":       [0, 1, 1, 2, 0, 2, 0],
+    "Inaptos_Mulheres":     [0, 0, 0, 1, 2, 0, 0],
+    "Aptos_Homens":         [2, 2, 0, 12,4, 0, 3],
+    "Aptos_Mulheres":       [2, 0, 0, 2, 5, 0, 3],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0, 0],
+    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -50,8 +51,8 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 160
-total_faltaram = 115
+total_agendados = 158
+total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
 
