@@ -17,26 +17,24 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("## 📊 Painel de Captação de Participantes")
-st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-11")
+st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-14")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "BD POMADA",
-        "BREXPIPRAZOL 2ºG",
-        "CETOPROFENO ",
-        "CLORIDRATO DE NEBIVOLOL 1ºG",
+        "CLORIDRATO DE NEBIVOLOL  1ºG",
         "CLORIDRATO DE NEBIVOLOL 2ºG",
-        "CLORIDRATO DE PAZOPANIBE 3ºG",
-        "SUMATRIPTANA + NAPROXENO 1ºG"
+        "CLORIDRATO DE PAZOPANIBE 3ºG ",
+        "CLORIDRATO DE TRAMADOL",
+        "PREGABALINA"
     ],
-    "Inaptos_Homens":       [2, 0, 2, 2, 1, 0, 0, 2],
-    "Inaptos_Mulheres":     [0, 0, 0, 1, 3, 0, 1, 0],
-    "Aptos_Homens":         [5, 0, 3, 3, 2, 1, 4, 6],
-    "Aptos_Mulheres":       [2, 1, 0, 1, 8, 3, 3, 5],
-    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0, 0, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0, 0]
+    "Inaptos_Homens":       [0, 2, 0, 0, 2, 1],
+    "Inaptos_Mulheres":     [0, 0, 1, 0, 0, 0],
+    "Aptos_Homens":        [4, 2, 0, 2, 15, 8],
+    "Aptos_Mulheres":      [3, 12, 2, 4, 1, 2],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0],
+    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -52,7 +50,7 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 161
+total_agendados = 219
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
