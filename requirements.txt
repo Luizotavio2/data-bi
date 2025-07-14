@@ -1,3 +1,4 @@
+#This reqirements, is about the liberaries we used in this BI
 streamlit
 pandas
 matplotlib
