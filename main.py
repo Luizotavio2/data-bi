@@ -17,23 +17,26 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("## 📊 Painel de Captação de Participantes")
-st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-17")
+st.markdown("Análise geral dos estudos clínicos | Atualizado em 2025-07-18")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
+        "BD POMADA",
         "APIXABANA",
+        "CANABIDIOL 5ºG",
         "CLORIDRATO DE NEBIVOLOL 2ºG",
-        "CLORIDRATO DE PAZOPANIBE 3ºG"
+        "ENZALUTAMIDA",
+        "PARACETAMOL + FOSFATO DE CODEÍNA"
 ],
 
-    "Inaptos_Homens":       [1, 2, 3, 2],
-    "Inaptos_Mulheres":     [0, 1, 3, 2],
-    "Aptos_Homens":         [0, 4, 1, 8],
-    "Aptos_Mulheres":       [0, 11, 2, 1],
-    "Desistentes_Homens":   [0, 0, 0, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0]
+    "Inaptos_Homens":       [0, 0, 1, 0, 0, 0, 0],
+    "Inaptos_Mulheres":     [0, 0, 3, 0, 4, 0, 0],
+    "Aptos_Homens":         [1, 1, 8, 1, 11, 1, 2],
+    "Aptos_Mulheres":       [2, 0, 12, 0, 10, 0, 6],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0, 0],
+    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -49,10 +52,11 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 185
+total_agendados = 195
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
+taxa_comparecimento = int(taxa_comparecimento)
 
 st.markdown("### 📈 Indicadores Gerais")
 col1, col2, col3, col4, col5 = st.columns(5)
@@ -64,7 +68,7 @@ col4.metric("📉 Taxa de Inaptos", f"{taxa_inaptos:.1f}%")
 col5, col6, col7 = st.columns(3)
 col5.metric("🚫 Desistentes", f"{total_desistentes}")
 col6.metric("📌 Agendados", total_agendados)
-col7.metric("👥 Comparecimento", f"{taxa_comparecimento:.1f}%")
+col7.metric("👥 Comparecimento", f"{taxa_comparecimento}%")
 
 st.markdown("---")
 
