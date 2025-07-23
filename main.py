@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import io
 
-st.set_page_config(page_title="Painel de Estudos Clínicos", layout="wide")
+st.set_page_config(page_title="Recrutamento 23/07/25", layout="wide")
 
 
 try:
@@ -17,26 +17,26 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("# 📊 Painel de Captação de Participantes")
-st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-21")
+st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-23")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "APIXABANA",
+        "BD POMADA",
         "CANABIDIOL 5ºG",
         "CLORIDRATO DE ATOMOXETINA",
-        "CLORIDRATO DE NEBIVOLOL 2ºG",
         "CLORIDRATO DE PAZOPANIBE 3ºG",
         "ENZALUTAMIDA",
-        "PARACETAMOL + FOSFATO DE CODEÍNA"
+        "PARACETAMOL + FOSFATO DE CODEÍNA",
+        "SUMATRIPTANA + NAPROXENO"
 ],
 
-    "Inaptos_Homens":       [0, 0, 0, 0, 4, 0, 1, 0],
-    "Inaptos_Mulheres":     [0, 2, 0, 0, 3, 0, 0, 1],
-    "Aptos_Homens":         [1, 2, 1, 0, 10, 1, 8, 2],
-    "Aptos_Mulheres":       [1, 6, 2, 1, 19, 1, 0, 2],
-    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0, 1, 0],
+    "Inaptos_Homens":       [1, 0, 1, 0, 0, 4, 0, 0],
+    "Inaptos_Mulheres":     [0, 0, 0, 0, 1, 0, 2, 0],
+    "Aptos_Homens":         [2, 1, 4, 2, 2, 11, 3, 2],
+    "Aptos_Mulheres":       [2, 0, 0, 7, 3, 0, 3, 0],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 1, 0, 0],
     "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0, 0]
 }
 
@@ -53,11 +53,11 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 282
+total_agendados = 195
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
-taxa_comparecimento = int(taxa_comparecimento)
+taxa_comparecimento = round(taxa_comparecimento)
 
 st.markdown("### 📈 Indicadores Gerais")
 col1, col2, col3, col4, col5 = st.columns(5)
@@ -108,14 +108,14 @@ with col_pie1:
         inaptos,
         labels=inaptos.index,
         autopct="%1.1f%%",
-        startangle=140,
+        startangle=90,
         colors=plt.cm.Greys(range(100, 256, int(155 / len(inaptos))))
     )
     ax_pie.axis("equal")
     st.pyplot(fig_pie)
 
 with col_pie2:
-    st.markdown("🚷 **Faltas x Comparecimentos**")
+    st.markdown("### 🚷Faltas x Comparecimentos")
     fig2, ax2 = plt.subplots(figsize=(4, 4))
     ax2.pie(
         [total_compareceram, total_faltaram],
