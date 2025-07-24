@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import io
 
-st.set_page_config(page_title="Recrutamento 23/07/25", layout="wide")
+st.set_page_config(page_title="Recrutamento 24/07/25", layout="wide")
 
 
 try:
@@ -17,27 +17,26 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("# 📊 Painel de Captação de Participantes")
-st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-23")
+st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-24")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "BD POMADA",
-        "CANABIDIOL 5ºG",
         "CLORIDRATO DE ATOMOXETINA",
         "CLORIDRATO DE PAZOPANIBE 3ºG",
         "ENZALUTAMIDA",
         "PARACETAMOL + FOSFATO DE CODEÍNA",
-        "SUMATRIPTANA + NAPROXENO"
+        "CANABIDIOL"
+        
 ],
 
-    "Inaptos_Homens":       [1, 0, 1, 0, 0, 4, 0, 0],
-    "Inaptos_Mulheres":     [0, 0, 0, 0, 1, 0, 2, 0],
-    "Aptos_Homens":         [2, 1, 4, 2, 2, 11, 3, 2],
-    "Aptos_Mulheres":       [2, 0, 0, 7, 3, 0, 3, 0],
-    "Desistentes_Homens":   [0, 0, 0, 0, 0, 1, 0, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0, 0]
+    "Inaptos_Homens":       [0, 1, 0, 5, 0, 1],
+    "Inaptos_Mulheres":     [0, 0, 3, 0, 0, 0],
+    "Aptos_Homens":         [1, 2, 1, 24, 8, 1],
+    "Aptos_Mulheres":      [2, 12, 7, 0, 5, 2],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0],
+    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -53,7 +52,7 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 195
+total_agendados = 225
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
@@ -64,7 +63,7 @@ col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("✅ Aptos", total_aptos)
 col2.metric("❌ Inaptos", total_inaptos)
 col3.metric("🧮 Total", total_geral)
-col4.metric("📉 Taxa de Inaptos", f"{taxa_inaptos:.1f}%")
+col4.metric("📉 Taxa de Inaptos", f"{round(taxa_inaptos)}%")
 
 col5, col6, col7 = st.columns(3)
 col5.metric("🚫 Desistentes", f"{total_desistentes}")
