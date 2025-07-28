@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import io
 
-st.set_page_config(page_title="Recrutamento 24/07/25", layout="wide")
+st.set_page_config(page_title="Recrutamento 28/07/25", layout="wide")
 
 
 try:
@@ -17,24 +17,24 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("# 📊 Painel de Captação de Participantes")
-st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-24")
+st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-28")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
+        "BD POMADA",
         "CLORIDRATO DE ATOMOXETINA",
+        "CLORIDRATO DE ATOMOXETINA 2ºG",
         "CLORIDRATO DE PAZOPANIBE 3ºG",
-        "ENZALUTAMIDA",
-        "PARACETAMOL + FOSFATO DE CODEÍNA",
-        "CANABIDIOL"
+        "PARACETAMOL + FOSFATO DE CODEÍNA 2ºG",
         
 ],
 
-    "Inaptos_Homens":       [0, 1, 0, 5, 0, 1],
-    "Inaptos_Mulheres":     [0, 0, 3, 0, 0, 0],
-    "Aptos_Homens":         [1, 2, 1, 24, 8, 1],
-    "Aptos_Mulheres":      [2, 12, 7, 0, 5, 2],
+    "Inaptos_Homens":       [2, 1, 0, 0, 0, 1],
+    "Inaptos_Mulheres":     [0, 0, 0, 0, 1, 0],
+    "Aptos_Homens":         [4, 0, 6, 0, 0, 3],
+    "Aptos_Mulheres":       [2, 0, 1, 2, 3, 3],
     "Desistentes_Homens":   [0, 0, 0, 0, 0, 0],
     "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
 }
@@ -52,7 +52,7 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 225
+total_agendados = 191
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
