@@ -23,18 +23,18 @@ st.markdown("---")
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "BD POMADA",
-        "CLORIDRATO DE ATOMOXETINA",
         "CLORIDRATO DE ATOMOXETINA 2ºG",
+        "CLORIDRATO DE NEBIVOLOL",
         "CLORIDRATO DE PAZOPANIBE 3ºG",
+        "ENZALUTAMIDA",
         "PARACETAMOL + FOSFATO DE CODEÍNA 2ºG",
         
 ],
 
-    "Inaptos_Homens":       [2, 1, 0, 0, 0, 1],
-    "Inaptos_Mulheres":     [0, 0, 0, 0, 1, 0],
-    "Aptos_Homens":         [4, 0, 6, 0, 0, 3],
-    "Aptos_Mulheres":       [2, 0, 1, 2, 3, 3],
+    "Inaptos_Homens":       [0, 6, 0, 0, 4, 0],
+    "Inaptos_Mulheres":     [0, 1, 0, 1, 0, 0],
+    "Aptos_Homens":        [5, 17, 0, 1, 0, 4],
+    "Aptos_Mulheres":       [1, 3, 5, 3, 14, 14],
     "Desistentes_Homens":   [0, 0, 0, 0, 0, 0],
     "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
 }
@@ -52,7 +52,7 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 191
+total_agendados = 190
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
