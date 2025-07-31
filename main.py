@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import io
 
-st.set_page_config(page_title="Recrutamento 28/07/25", layout="wide")
+st.set_page_config(page_title="Recrutamento 31/07/25", layout="wide")
 
 
 try:
@@ -17,26 +17,27 @@ except:
     st.warning("⚠️ Logo não encontrada.")
 
 st.markdown("# 📊 Painel de Captação de Participantes")
-st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-28")
+st.markdown("### Análise geral dos estudos clínicos | Atualizado em 2025-07-31")
 st.markdown("---")
 
 dados = {
     "Estudo": [
         "BANCO DE DADOS",
-        "CLORIDRATO DE ATOMOXETINA 2ºG",
+        "CLORIDRATO DE METFORMINA",
         "CLORIDRATO DE NEBIVOLOL",
         "CLORIDRATO DE PAZOPANIBE 3ºG",
+        "CLORIDRATO DE TRAMADOL",
         "ENZALUTAMIDA",
-        "PARACETAMOL + FOSFATO DE CODEÍNA 2ºG",
+        "PARACETAMOL + FOSFATO DE CODEÍNA 2ºG"
         
 ],
 
-    "Inaptos_Homens":       [0, 6, 0, 0, 4, 0],
-    "Inaptos_Mulheres":     [0, 1, 0, 1, 0, 0],
-    "Aptos_Homens":        [5, 17, 0, 1, 0, 4],
-    "Aptos_Mulheres":       [1, 3, 5, 3, 14, 14],
-    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0],
-    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0]
+    "Inaptos_Homens":       [1, 1, 3, 0, 1, 0, 1],
+    "Inaptos_Mulheres":     [0, 1, 0, 0, 0, 0, 0],
+    "Aptos_Homens":         [2, 2, 19, 0, 2, 12, 10],
+    "Aptos_Mulheres":       [0, 1, 11, 4, 2, 0, 9],
+    "Desistentes_Homens":   [0, 0, 0, 0, 0, 0, 0],
+    "Desistentes_Mulheres": [0, 0, 0, 0, 0, 0, 0]
 }
 
 df = pd.DataFrame(dados)
@@ -52,7 +53,7 @@ total_desistentes = df["Desistentes_Total"].sum()
 total_geral = df["Total_Geral"].sum()
 taxa_inaptos = (total_inaptos / total_geral) * 100
 
-total_agendados = 190
+total_agendados = 257
 total_faltaram = total_agendados - df["Total_Geral"].sum()
 total_compareceram = total_agendados - total_faltaram
 taxa_comparecimento = (total_compareceram / total_agendados) * 100
